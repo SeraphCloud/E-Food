@@ -1,35 +1,45 @@
-import { Link } from 'react-router-dom'
-import type { Restaurant } from '../../types'
-import * as S from './styles'
-import estrela from '../../assets/estrela.svg'
+import estrela from "../../assets/estrela.svg";
+import { Button, CardWrapper, Infos, Tag, TitleWrapper } from "./styles";
 
-type RestaurantCardProps = {
-  restaurant: Restaurant
-}
+type Props = {
+	titulo: string;
+	destaque?: boolean;
+	tipo: string;
+	avaliacao: number;
+	descricao: string;
+	capa: string;
+};
 
-const RestaurantCard = ({ restaurant }: RestaurantCardProps) => {
-  return (
-    <S.Card>
-      <S.CardImage src={restaurant.capa} alt={restaurant.titulo} />
-      <S.Tags>
-        {restaurant.destacado && <S.Tag>Destaque da semana</S.Tag>}
-        <S.Tag>{restaurant.tipo}</S.Tag>
-      </S.Tags>
-      <S.CardContent>
-        <S.CardHeader>
-          <h3>{restaurant.titulo}</h3>
-          <div>
-            <span>{restaurant.avaliacao}</span>
-            <img src={estrela} alt="Estrela" />
-          </div>
-        </S.CardHeader>
-        <S.Description>{restaurant.descricao}</S.Description>
-        <Link to={`/perfil/${restaurant.id}`}>
-          <S.Button>Saiba mais</S.Button>
-        </Link>
-      </S.CardContent>
-    </S.Card>
-  )
-}
+const RestaurantCard = ({
+	titulo,
+	destaque,
+	tipo,
+	avaliacao,
+	descricao,
+	capa,
+}: Props) => {
+	return (
+		<CardWrapper>
+			<img src={capa} alt={titulo} />
+			<Infos>
+				{destaque && <Tag>Destaque da semana</Tag>}
+				<Tag>{tipo}</Tag>
+			</Infos>
+			<div className="container">
+				<TitleWrapper>
+					<h2>{titulo}</h2>
+					<span>
+						{avaliacao}
+						<img src={estrela} alt="estrela" />
+					</span>
+				</TitleWrapper>
+				<p>{descricao}</p>
+			</div>
+			<Button to={"/perfil"} type="button">
+				Saiba Mais
+			</Button>
+		</CardWrapper>
+	);
+};
 
-export default RestaurantCard
+export default RestaurantCard;

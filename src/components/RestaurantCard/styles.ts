@@ -1,76 +1,73 @@
-import styled from 'styled-components'
-import { colors } from '../../styles/GlobalStyles'
+import { Link } from "react-router";
+import styled from "styled-components";
 
-export const Card = styled.div`
-  background-color: ${colors.white};
-  border: 1px solid ${colors.primary};
+export const CardWrapper = styled.div`
+  max-width: 480px;
+  border: 1px solid #E66767;
   position: relative;
-  overflow: hidden;
-`
 
-export const CardImage = styled.img`
-  width: 100%;
-  height: 217px;
-  object-fit: cover;
-`
+  > img {
+    width: 100%;
+  }
 
-export const CardContent = styled.div`
-  padding: 8px;
-`
+  p {
+    color: #E66767;
+    font-size: 14px;
+    line-height: 22px;
+    margin: 0 8px 16px;
+  }
+ `;
 
-export const CardHeader = styled.div`
+export const TitleWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 16px;
+  padding: 0 8px;
+  margin-bottom: 16px; 
 
-  h3 {
+  h2 {
+    color: #E66767;
     font-size: 18px;
-    font-weight: 700;
-    color: ${colors.primary};
   }
 
-  div {
+  span {
     display: flex;
     align-items: center;
-    gap: 8px;
-    
-    span {
-      font-size: 18px;
-      font-weight: 700;
-      color: ${colors.primary};
+    color: #E66767;
+    font-weight: bold;
+    font-size: 18px;
+
+    img {
+      margin-left: 8px;
     }
   }
-`
+`;
 
-export const Description = styled.p`
-  font-size: 14px;
-  line-height: 22px;
-  color: ${colors.primary};
-  margin-bottom: 16px;
-`
-
-export const Button = styled.button`
-  background-color: ${colors.primary};
-  color: ${colors.lightPink};
+export const Button = styled(Link)`
+  display: inline-block;
   padding: 4px 6px;
   font-size: 14px;
-  font-weight: 700;
-`
+  font-weight: bold;
+  color: #FFEBD9;
+  border: none;
+  background-color: #E66767;
+  margin-bottom: 8px;
+  margin-left: 8px;
+  cursor: pointer;
+  text-decoration: none;
+`;
 
-export const Tags = styled.div`
+export const Infos = styled.div`
   position: absolute;
   top: 16px;
   right: 16px;
-  display: flex;
-  gap: 8px;
-`
+`;
 
 export const Tag = styled.span`
-  background-color: ${colors.primary};
-  color: ${colors.lightPink};
+  background-color: #E66767;
+  color: #FFEBD9;
   padding: 6px 4px;
   font-size: 12px;
-  font-weight: 700;
-  text-transform: capitalize;
-`
+  font-weight: bold;
+  margin-left: 8px;
+`;

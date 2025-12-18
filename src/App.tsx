@@ -1,18 +1,13 @@
-import { BrowserRouter } from 'react-router-dom'
-import { Provider } from 'react-redux'
-import { store } from './store'
-import { GlobalStyle } from './styles/GlobalStyles'
-import AppRoutes from './routes'
+import Rotas from "./routes";
+import { GlobalStyle } from "./styles";
 
 function App() {
-  return (
-    <Provider store={store}>
-      <BrowserRouter>
-        <GlobalStyle />
-        <AppRoutes />
-      </BrowserRouter>
-    </Provider>
-  )
+	return (
+		<>
+			<GlobalStyle />
+			<Rotas />
+		</>
+	);
 }
 
-export default App
+export default App;

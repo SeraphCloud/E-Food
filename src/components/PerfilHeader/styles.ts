@@ -15,6 +15,7 @@ export const HeaderInner = styled(GlobalContainer)`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 `;
 
 export const HomeLink = styled(Link)`
@@ -26,6 +27,10 @@ export const HomeLink = styled(Link)`
 
 export const Logo = styled.img`
   max-width: 125px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 `;
 
 export const CartText = styled.p`

@@ -1,28 +1,21 @@
 import FoodCard from "../FoodCard";
 import { ListContainer } from "./styles";
+import type { Dish } from "../../types/api";
 
-const FoodList = () => {
+interface FoodListProps {
+	dishes: Dish[];
+	onMaisDetalhes: (dish: Dish) => void;
+}
+
+const FoodList = ({ dishes, onMaisDetalhes }: FoodListProps) => {
 	return (
 		<ListContainer>
 			<ul>
-				<li>
-					<FoodCard />
-				</li>
-				<li>
-					<FoodCard />
-				</li>
-				<li>
-					<FoodCard />
-				</li>
-				<li>
-					<FoodCard />
-				</li>
-				<li>
-					<FoodCard />
-				</li>
-				<li>
-					<FoodCard />
-				</li>
+				{dishes.map((dish) => (
+					<li key={dish.id}>
+						<FoodCard dish={dish} onMaisDetalhes={onMaisDetalhes} />
+					</li>
+				))}
 			</ul>
 		</ListContainer>
 	);

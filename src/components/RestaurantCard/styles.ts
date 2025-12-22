@@ -1,4 +1,3 @@
-import { Link } from "react-router";
 import styled from "styled-components";
 
 export const CardWrapper = styled.div`
@@ -7,7 +6,11 @@ export const CardWrapper = styled.div`
   position: relative;
 
   > img {
+    max-width: 480px;
+    max-height: 220px;
     width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
   p {
@@ -43,7 +46,7 @@ export const TitleWrapper = styled.div`
   }
 `;
 
-export const Button = styled(Link)`
+export const Button = styled.button`
   display: inline-block;
   padding: 4px 6px;
   font-size: 14px;
@@ -55,6 +58,10 @@ export const Button = styled(Link)`
   margin-left: 8px;
   cursor: pointer;
   text-decoration: none;
+
+  &:hover {
+    background-color: #d45555;
+  }
 `;
 
 export const Infos = styled.div`

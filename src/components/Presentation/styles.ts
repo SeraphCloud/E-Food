@@ -1,11 +1,8 @@
 import styled from "styled-components";
-import hiokiSushi from "../../assets/hioki_sushi.png";
+import { GlobalContainer } from "../../styles";
 
-export const PresentationContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background-image: url(${hiokiSushi});
+export const PresentationContainer = styled.div<{ $backgroundImage: string }>`
+  background-image: url(${(props) => props.$backgroundImage});
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -22,24 +19,27 @@ export const PresentationContainer = styled.div`
     background-color: rgba(0, 0, 0, 0.3);
     z-index: 1;
   }
+`;
+
+export const PresentationInner = styled(GlobalContainer)`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  z-index: 2;
 
   h2 {
     font-size: 32px;
     font-weight: bold;
     color: #fff;
-    position: relative;
-    z-index: 2;
     margin-bottom: 32px;
-    margin-left: 170px; 
   }
 
   h3 {
     font-size: 32px;
     color: #fff;
     font-weight: 100;
-    position: relative;
-    z-index: 2;
     margin-top: 25px;
-    margin-left: 170px;
   }
 `;

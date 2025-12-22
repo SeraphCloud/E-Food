@@ -1,23 +1,35 @@
 import estrela from "../../assets/estrela.svg";
 import { Button, CardWrapper, Infos, Tag, TitleWrapper } from "./styles";
+import { useNavigate } from "react-router-dom";
 
 type Props = {
+	id: number;
 	titulo: string;
 	destaque?: boolean;
 	tipo: string;
 	avaliacao: number;
 	descricao: string;
 	capa: string;
+	onClick: (id: number) => void;
 };
 
 const RestaurantCard = ({
+	id,
 	titulo,
 	destaque,
 	tipo,
 	avaliacao,
 	descricao,
 	capa,
+	onClick,
 }: Props) => {
+	const navigate = useNavigate();
+
+	const handleClick = () => {
+		onClick(id);
+		navigate("/perfil");
+	};
+
 	return (
 		<CardWrapper>
 			<img src={capa} alt={titulo} />
@@ -35,7 +47,7 @@ const RestaurantCard = ({
 				</TitleWrapper>
 				<p>{descricao}</p>
 			</div>
-			<Button to={"/perfil"} type="button">
+			<Button type="button" onClick={handleClick}>
 				Saiba Mais
 			</Button>
 		</CardWrapper>

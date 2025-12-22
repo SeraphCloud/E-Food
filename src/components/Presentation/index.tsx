@@ -1,10 +1,17 @@
-import { PresentationContainer } from "./styles";
+import { PresentationContainer, PresentationInner } from "./styles";
+import type { Restaurant } from "../../types/api";
 
-const Presentation = () => {
+interface PresentationProps {
+	restaurant?: Restaurant | null;
+}
+
+const Presentation = ({ restaurant }: PresentationProps) => {
 	return (
-		<PresentationContainer>
-			<h3>Japonesa</h3>
-			<h2>Hioki Sushi</h2>
+		<PresentationContainer $backgroundImage={restaurant?.capa || ""}>
+			<PresentationInner>
+				<h3>{restaurant?.tipo || "Tipo não disponível"}</h3>
+				<h2>{restaurant?.titulo || "Restaurante não encontrado"}</h2>
+			</PresentationInner>
 		</PresentationContainer>
 	);
 };

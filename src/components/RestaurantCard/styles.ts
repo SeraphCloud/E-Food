@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const CardWrapper = styled.div`
   max-width: 480px;
+  max-height: 400px;
   border: 1px solid #E66767;
   position: relative;
 
@@ -18,6 +19,14 @@ export const CardWrapper = styled.div`
     font-size: 14px;
     line-height: 22px;
     margin: 0 8px 16px;
+    font-weight: normal;
+    margin-bottom: 8px;
+    flex: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
  `;
 

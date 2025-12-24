@@ -23,7 +23,7 @@ const useRestaurant = (
 				setError(null);
 
 				const response = await fetch(
-					"https://api-ebac.vercel.app/api/efood/restaurantes",
+					"https://fake-api-havokk.vercel.app/api/efood/restaurantes",
 				);
 
 				if (!response.ok) {

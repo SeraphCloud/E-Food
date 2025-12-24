@@ -17,7 +17,7 @@ const FoodCard = ({ dish, onMaisDetalhes }: FoodCardProps) => {
 			<h3>{dish.nome}</h3>
 			<p>{dish.descricao}</p>
 			<DetalhesButton type="button" onClick={handleClick}>
-				Mais detalhes
+				Adicionar ao carrinho
 			</DetalhesButton>
 		</CardContainer>
 	);

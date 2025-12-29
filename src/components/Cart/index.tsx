@@ -1,26 +1,68 @@
-import mock from "../../assets/hioki_sushi.png";
-import { DetalhesButton } from "../FoodCard/styles";
-import { CartContainer, CartInfos, Overlay, Sidebar } from "./styles";
+import { useSelector, useDispatch } from "react-redux";
+import { remove } from "../../store/reducers/cart";
+import lixeira from "../../assets/lixeira.svg";
+import type { RootReducer } from "../../store";
+import type { Dish } from "../../types/api";
+import {
+	Button,
+	CartContainer,
+	CartInfos,
+	CartItemStyled,
+	Delete,
+	Overlay,
+	Sidebar,
+} from "./styles";
 
-const Cart = () => {
+type CartItemProps = {
+	dish: Dish;
+	quantity: number;
+	onRemove: () => void;
+};
+
+const CartItem = ({ dish, quantity, onRemove }: CartItemProps) => (
+	<CartItemStyled>
+		<img src={dish.foto} alt={dish.nome} />
+		<div>
+			<h3>{dish.nome}</h3>
+			<p>R$ {dish.preco.toFixed(2)}</p>
+			<span>{quantity}x</span>
+		</div>
+		<Delete onClick={onRemove} src={lixeira} alt="excluir" />
+	</CartItemStyled>
+);
+
+type CartProps = {
+	onClose: () => void;
+};
+
+const Cart = ({ onClose }: CartProps) => {
+	const items = useSelector((state: RootReducer) => state.cart.items);
+	const dispatch = useDispatch();
+
+	const total = items.reduce(
+		(sum, item) => sum + item.dish.preco * item.quantity,
+		0,
+	);
+
 	return (
 		<CartContainer>
-			<Overlay />
-			<Sidebar>
+			<Overlay onClick={onClose} />
+			<Sidebar onClick={(e: React.MouseEvent) => e.stopPropagation()}>
 				<ul>
-					<li>
-						<img src={mock} alt="imagem-mock" />
-						<div>
-							<h3>Nome do prato</h3>
-							<p>R$ 60,90</p>
-						</div>
-					</li>
+					{items.map((item) => (
+						<CartItem
+							key={item.dish.id}
+							dish={item.dish}
+							quantity={item.quantity}
+							onRemove={() => dispatch(remove(item.dish.id))}
+						/>
+					))}
 				</ul>
 				<CartInfos>
 					<h4>Valor total</h4>
-					<p>R$ 180,88</p>
-					<DetalhesButton>Continuar com a entrega</DetalhesButton>
+					<p>R$ {total.toFixed(2)}</p>
 				</CartInfos>
+				<Button>Continuar com a entrega</Button>
 			</Sidebar>
 		</CartContainer>
 	);

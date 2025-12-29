@@ -6,7 +6,6 @@ interface UseRestaurantResult {
 	dishes: Dish[];
 	loading: boolean;
 	error: string | null;
-	setRestaurantId: (id: number) => void;
 }
 
 const useRestaurant = (
@@ -29,7 +28,6 @@ const useRestaurant = (
 		dishes,
 		loading,
 		error: error ? (error as Error).message : null,
-		setRestaurantId: () => {}, // Not needed anymore
 	};
 };
 

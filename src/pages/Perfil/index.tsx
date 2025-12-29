@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { add } from "../../store/reducers/cart";
 import FoodList from "../../components/FoodList";
 import Footer from "../../components/Footer";
 import PerfilHeader from "../../components/PerfilHeader";
@@ -13,6 +15,8 @@ import Cart from "../../components/Cart";
 const Perfil = () => {
 	const [isModalVisible, setIsModalVisible] = useState(false);
 	const [selectedDish, setSelectedDish] = useState<Dish | null>(null);
+	const [isCartVisible, setIsCartVisible] = useState(false);
+	const dispatch = useDispatch();
 
 	const { selectedRestaurantId } = useRestaurantContext();
 	const { restaurant, dishes, loading, error } =
@@ -28,10 +32,18 @@ const Perfil = () => {
 		setSelectedDish(null);
 	};
 
+	const handleAddToCart = (dish: Dish) => {
+		dispatch(add(dish));
+	};
+
+	const handleCloseCart = () => {
+		setIsCartVisible(false);
+	};
+
 	if (loading) {
 		return (
 			<PageContainer $isModalVisible={isModalVisible}>
-				<PerfilHeader />
+				<PerfilHeader onCartClick={() => setIsCartVisible(true)} />
 				<Presentation />
 				<div style={{ textAlign: "center", padding: "40px" }}>
 					<p>Carregando restaurante...</p>
@@ -58,7 +70,7 @@ const Perfil = () => {
 	return (
 		<>
 			<PageContainer $isModalVisible={isModalVisible}>
-				<PerfilHeader />
+				<PerfilHeader onCartClick={() => setIsCartVisible(true)} />
 				<Presentation restaurant={restaurant} />
 				<FoodList dishes={dishes} onMaisDetalhes={openModal} />
 				<Footer />
@@ -70,9 +82,11 @@ const Perfil = () => {
 					title={selectedDish.nome}
 					description={selectedDish.descricao}
 					imageUrl={selectedDish.foto}
+					dish={selectedDish}
+					onAdd={handleAddToCart}
 				/>
 			)}
-			<Cart />
+			{isCartVisible && <Cart onClose={handleCloseCart} />}
 		</>
 	);
 };

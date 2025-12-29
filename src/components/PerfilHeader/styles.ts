@@ -37,4 +37,5 @@ export const CartText = styled.p`
   color: #E66767;
   font-size: 18px;
   font-weight: bold;
+  cursor: pointer;
 `;

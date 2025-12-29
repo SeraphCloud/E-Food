@@ -8,6 +8,7 @@ import { PageContainer } from "./styles";
 import { useRestaurantContext } from "../../contexts/RestaurantContext";
 import useRestaurant from "../../hooks/useRestaurant";
 import type { Dish } from "../../types/api";
+import Cart from "../../components/Cart";
 
 const Perfil = () => {
 	const [isModalVisible, setIsModalVisible] = useState(false);
@@ -71,6 +72,7 @@ const Perfil = () => {
 					imageUrl={selectedDish.foto}
 				/>
 			)}
+			<Cart />
 		</>
 	);
 };

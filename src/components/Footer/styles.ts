@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Colors } from "../../styles";
 
 export const FooterContainer = styled.div`
   display: flex;
@@ -6,7 +7,7 @@ export const FooterContainer = styled.div`
   justify-content: center;
   align-items: center;
   height: 300px;
-  background-color: #FFEBD9;
+  background-color: ${Colors.cream};
   margin-top: 120px;
 
   img {
@@ -15,7 +16,7 @@ export const FooterContainer = styled.div`
 
   p {
     max-width: 480px;
-    color: #E66767;
+    color: ${Colors.orange};
     text-align: center;
     font-size: 10px;
     margin-top: 80px;

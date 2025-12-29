@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import type { FC } from "react";
 import { ModalOverlay, ModalContent } from "./styles";
 import { formatBRL } from "../../utils/format";
@@ -10,7 +11,7 @@ type ModalProps = {
 	description: string;
 	imageUrl: string;
 	dish: Dish;
-	onAdd: (dish: Dish) => void;
+	onAdd: (dish: Dish) => void | Promise<void>;
 };
 
 const Modal: FC<ModalProps> = ({
@@ -22,6 +23,9 @@ const Modal: FC<ModalProps> = ({
 	dish,
 	onAdd,
 }) => {
+	const [isLoading, setIsLoading] = useState(false);
+	const [error, setError] = useState<string | null>(null);
+
 	if (!isVisible) return null;
 
 	return (
@@ -31,14 +35,26 @@ const Modal: FC<ModalProps> = ({
 				<div className="content-wrapper">
 					<h3>{title}</h3>
 					<p>{description}</p>
+					{error && <p className="error">{error}</p>}
 					<button
 						type="button"
-						onClick={() => {
-							onAdd(dish);
-							onClose();
+						onClick={async () => {
+							setIsLoading(true);
+							setError(null);
+							try {
+								await onAdd(dish);
+								onClose();
+							} catch {
+								setError("Failed to add item to cart");
+							} finally {
+								setIsLoading(false);
+							}
 						}}
+						disabled={isLoading}
 					>
-						Adicionar ao carrinho - {formatBRL(dish.preco)}
+						{isLoading
+							? "Adding..."
+							: `Adicionar ao carrinho - ${formatBRL(dish.preco)}`}
 					</button>
 				</div>
 			</ModalContent>

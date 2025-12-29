@@ -1,13 +1,14 @@
 import styled from "styled-components";
+import { Colors } from "../../styles";
 
 export const CardContainer = styled.div`
   max-width: 340px;
   height: 340px;
-  background-color: #E66767;
+  background-color: ${Colors.orange};
   padding: 8px;
   display: flex;
   flex-direction: column;
-  color: #FFEBD9;
+  color: ${Colors.cream};
   overflow: hidden;
 
   img {
@@ -38,16 +39,16 @@ export const CardContainer = styled.div`
 `;
 
 export const DetalhesButton = styled.button`
-  background-color: #FFEBD9;
-  border: 2px solid #FFEBD9;
+  background-color: ${Colors.cream};
+  border: 2px solid ${Colors.cream};
   padding: 4px 0;
   text-align: center;
-  color: #E66767;
+  color: ${Colors.orange};
   font-weight: bold;
   cursor: pointer;
-  
+
   &:hover {
-    background-color: #E66767;
-    color: #FFEBD9;
+    background-color: ${Colors.orange};
+    color: ${Colors.cream};
   }
 `;

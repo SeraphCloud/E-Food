@@ -29,6 +29,35 @@ const cartSlice = createSlice({
 				state.items.push({ dish: action.payload, quantity: 1 });
 			}
 		},
+		increment: (state, action: PayloadAction<number>) => {
+			const item = state.items.find((item) => item.dish.id === action.payload);
+			if (item) {
+				item.quantity += 1;
+			}
+		},
+		decrement: (state, action: PayloadAction<number>) => {
+			const item = state.items.find((item) => item.dish.id === action.payload);
+			if (item) {
+				if (item.quantity > 1) {
+					item.quantity -= 1;
+				} else {
+					const index = state.items.findIndex(
+						(i) => i.dish.id === action.payload,
+					);
+					if (index !== -1) {
+						state.items.splice(index, 1);
+					}
+				}
+			}
+		},
+		removeItem: (state, action: PayloadAction<number>) => {
+			const index = state.items.findIndex(
+				(item) => item.dish.id === action.payload,
+			);
+			if (index !== -1) {
+				state.items.splice(index, 1);
+			}
+		},
 		remove: (state, action: PayloadAction<number>) => {
 			const index = state.items.findIndex(
 				(item) => item.dish.id === action.payload,
@@ -47,6 +76,7 @@ const cartSlice = createSlice({
 	},
 });
 
-export const { add, remove, clear } = cartSlice.actions;
+export const { add, increment, decrement, removeItem, remove, clear } =
+	cartSlice.actions;
 
 export default cartSlice.reducer;

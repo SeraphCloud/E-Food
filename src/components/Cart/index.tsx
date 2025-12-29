@@ -69,7 +69,7 @@ const Cart = ({ onClose, onContinueToDelivery }: CartProps) => {
 		if (onContinueToDelivery) {
 			onContinueToDelivery();
 		} else {
-			alert("Delivery flow not implemented yet");
+			alert("Delivery ainda não implementado.");
 			onClose();
 		}
 	};

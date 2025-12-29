@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { remove } from "../../store/reducers/cart";
 import lixeira from "../../assets/lixeira.svg";
+import { formatBRL } from "../../utils/format";
 import type { RootReducer } from "../../store";
 import type { Dish } from "../../types/api";
 import {
@@ -24,7 +25,7 @@ const CartItem = ({ dish, quantity, onRemove }: CartItemProps) => (
 		<img src={dish.foto} alt={dish.nome} />
 		<div>
 			<h3>{dish.nome}</h3>
-			<p>R$ {dish.preco.toFixed(2)}</p>
+			<p>{formatBRL(dish.preco)}</p>
 			<span>{quantity}x</span>
 		</div>
 		<Delete onClick={onRemove} src={lixeira} alt="excluir" />
@@ -60,7 +61,7 @@ const Cart = ({ onClose }: CartProps) => {
 				</ul>
 				<CartInfos>
 					<h4>Valor total</h4>
-					<p>R$ {total.toFixed(2)}</p>
+					<p>{formatBRL(total)}</p>
 				</CartInfos>
 				<Button>Continuar com a entrega</Button>
 			</Sidebar>

@@ -1,5 +1,6 @@
 import type { FC } from "react";
 import { ModalOverlay, ModalContent } from "./styles";
+import { formatBRL } from "../../utils/format";
 import type { Dish } from "../../types/api";
 
 type ModalProps = {
@@ -37,7 +38,7 @@ const Modal: FC<ModalProps> = ({
 							onClose();
 						}}
 					>
-						Adicionar ao carrinho - R$ {dish.preco.toFixed(2)}
+						Adicionar ao carrinho - {formatBRL(dish.preco)}
 					</button>
 				</div>
 			</ModalContent>

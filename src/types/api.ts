@@ -17,7 +17,3 @@ export interface Restaurant {
 	capa: string;
 	cardapio: Dish[];
 }
-
-export interface ApiResponse {
-	restaurants: Restaurant[];
-}

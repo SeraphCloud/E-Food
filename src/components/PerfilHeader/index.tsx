@@ -1,4 +1,6 @@
+import { useSelector } from "react-redux";
 import logo from "../../assets/logo.svg";
+import type { RootReducer } from "../../store";
 import {
 	HeaderContainer,
 	HeaderInner,
@@ -7,13 +9,22 @@ import {
 	CartText,
 } from "./styles";
 
-const PerfilHeader = () => {
+type PerfilHeaderProps = {
+	onCartClick?: () => void;
+};
+
+const PerfilHeader = ({ onCartClick }: PerfilHeaderProps) => {
+	const items = useSelector((state: RootReducer) => state.cart.items);
+	const totalQuantity = items.reduce((sum, item) => sum + item.quantity, 0);
+
 	return (
 		<HeaderContainer>
 			<HeaderInner>
 				<HomeLink to={"/"}>Restaurantes</HomeLink>
 				<Logo src={logo} alt="e-food-logo" />
-				<CartText>0 produtos no carrinho</CartText>
+				<CartText onClick={onCartClick}>
+					{totalQuantity} produto{totalQuantity !== 1 ? "s" : ""} no carrinho
+				</CartText>
 			</HeaderInner>
 		</HeaderContainer>
 	);

@@ -1,9 +1,10 @@
 import styled from "styled-components";
+import { Colors } from "../../styles";
 
 export const CardWrapper = styled.div`
   max-width: 480px;
   max-height: 400px;
-  border: 1px solid #E66767;
+  border: 1px solid ${Colors.orange};
   position: relative;
 
   > img {
@@ -15,7 +16,7 @@ export const CardWrapper = styled.div`
   }
 
   p {
-    color: #E66767;
+    color: ${Colors.orange};
     font-size: 14px;
     line-height: 22px;
     margin: 0 8px 16px;
@@ -35,17 +36,17 @@ export const TitleWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0 8px;
-  margin-bottom: 16px; 
+  margin-bottom: 16px;
 
   h2 {
-    color: #E66767;
+    color: ${Colors.orange};
     font-size: 18px;
   }
 
   span {
     display: flex;
     align-items: center;
-    color: #E66767;
+    color: ${Colors.orange};
     font-weight: bold;
     font-size: 18px;
 
@@ -60,9 +61,9 @@ export const Button = styled.button`
   padding: 4px 6px;
   font-size: 14px;
   font-weight: bold;
-  color: #FFEBD9;
+  color: ${Colors.cream};
   border: none;
-  background-color: #E66767;
+  background-color: ${Colors.orange};
   margin-bottom: 8px;
   margin-left: 8px;
   cursor: pointer;
@@ -80,8 +81,8 @@ export const Infos = styled.div`
 `;
 
 export const Tag = styled.span`
-  background-color: #E66767;
-  color: #FFEBD9;
+  background-color: ${Colors.orange};
+  color: ${Colors.cream};
   padding: 6px 4px;
   font-size: 12px;
   font-weight: bold;

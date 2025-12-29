@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Colors } from "../../styles";
 
 export const ModalOverlay = styled.div`
   position: fixed;
@@ -13,7 +14,7 @@ export const ModalOverlay = styled.div`
   z-index: 1000;
   opacity: 0;
   animation: fadeIn 0.3s forwards;
-  
+
   @keyframes fadeIn {
     to {
       opacity: 1;
@@ -24,10 +25,10 @@ export const ModalOverlay = styled.div`
 export const ModalContent = styled.div`
   max-width: 1024px;
   width: 100%;
-  background-color: #E66767;
+  background-color: ${Colors.orange};
   padding: 32px;
   display: flex;
-  color: #FFEBD9;
+  color: ${Colors.cream};
   position: relative;
   transform: scale(0.9);
   animation: scaleIn 0.3s forwards;
@@ -63,10 +64,10 @@ export const ModalContent = styled.div`
   }
 
   button {
-    background-color: #FFEBD9;
+    background-color: ${Colors.cream};
     padding: 4px 0;
     text-align: center;
-    color: #E66767;
+    color: ${Colors.orange};
     font-weight: bold;
     border: none;
     cursor: pointer;

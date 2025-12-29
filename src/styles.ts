@@ -1,5 +1,11 @@
 import styled, { createGlobalStyle } from "styled-components";
 
+export const Colors = {
+	orange: "#E66767",
+	cream: "#FFEBD9",
+	offwhite: "#FFF8F2",
+};
+
 export const GlobalStyle = createGlobalStyle`
   * {
     padding: 0;
@@ -7,9 +13,9 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     font-family: Roboto, 'sans-serif';
   }
-  
+
   body {
-    background-color: #FFF8F2;
+    background-color: ${Colors.offwhite};
   }
 
   `;

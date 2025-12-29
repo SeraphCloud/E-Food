@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import vector from "../../assets/vector.svg";
+import { Colors } from "../../styles";
 
 export const HeaderContainer = styled.header`
   height: 384px;
@@ -7,7 +8,7 @@ export const HeaderContainer = styled.header`
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-color: #FFEBD9;
+  background-color: ${Colors.cream};
   display: flex;
   justify-content: center;
 
@@ -24,7 +25,7 @@ export const HeaderContainer = styled.header`
     }
 
     h1 {
-      color: #E66767;
+      color: ${Colors.orange};
       text-align: center;
       font-size: 36px;
       font-weight: bold;

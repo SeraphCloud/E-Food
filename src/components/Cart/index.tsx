@@ -233,6 +233,7 @@ const Cart = ({ onClose }: CartProps) => {
 
 	const renderDelivery = () => (
 		<Formik
+			key="delivery"
 			initialValues={deliveryData}
 			validationSchema={deliverySchema}
 			onSubmit={(values) => {
@@ -352,11 +353,10 @@ const Cart = ({ onClose }: CartProps) => {
 
 	const renderPayment = () => (
 		<Formik
+			key="payment"
 			initialValues={getInitialPaymentValues()}
 			validationSchema={paymentSchema}
 			onSubmit={async (values, { setSubmitting }) => {
-				console.log("Form submitted with values:", values);
-
 				setPaymentData(values);
 				const payload: CheckoutPayload = {
 					products: items.map((item) => ({

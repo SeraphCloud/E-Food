@@ -1,17 +1,28 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import type { Restaurant } from "../types/api";
+import type {
+	Restaurant,
+	CheckoutPayload,
+	CheckoutResponse,
+} from "../types/api";
 
 const api = createApi({
 	baseQuery: fetchBaseQuery({
-		baseUrl: "https://fake-api-havokk.vercel.app/api/efood/restaurantes",
+		baseUrl: "https://api-ebac.vercel.app/api/efood",
 	}),
 	endpoints: (builder) => ({
 		getRestaurants: builder.query<Restaurant[], void>({
-			query: () => "",
+			query: () => "restaurantes",
+		}),
+		checkout: builder.mutation<CheckoutResponse, CheckoutPayload>({
+			query: (payload) => ({
+				url: "checkout",
+				method: "POST",
+				body: payload,
+			}),
 		}),
 	}),
 });
 
-export const { useGetRestaurantsQuery } = api;
+export const { useGetRestaurantsQuery, useCheckoutMutation } = api;
 
 export default api;

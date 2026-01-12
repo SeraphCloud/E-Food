@@ -1,6 +1,11 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { increment, decrement, removeItem } from "../../store/reducers/cart";
+import {
+	increment,
+	decrement,
+	removeItem,
+	clear,
+} from "../../store/reducers/cart";
 import { RiAddFill, RiSubtractFill } from "react-icons/ri";
 import { Formik, Form, Field, ErrorMessage, useField } from "formik";
 import * as Yup from "yup";
@@ -390,6 +395,7 @@ const Cart = ({ onClose }: CartProps) => {
 					console.log("Generated Order ID:", generatedOrderId);
 					console.log("Changing step to confirmation");
 					setStep("confirmation");
+					dispatch(clear());
 					console.log("Step changed successfully");
 				} catch (error) {
 					console.error("API error:", error);

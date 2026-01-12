@@ -146,3 +146,63 @@ export const Button = styled(DetalhesButton)`
   width: 100%;
   margin-top: 16px;
 `;
+
+export const InputGroup = styled.div`
+  margin-bottom: 16px;
+`;
+
+export const Row = styled.div`
+  display: flex;
+  gap: 16px;
+`;
+
+export const Label = styled.label`
+  color: ${Colors.cream};
+  font-size: 14px;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 8px;
+`;
+
+export const Input = styled.input`
+  background-color: ${Colors.cream};
+  border: none;
+  padding: 8px;
+  width: 100%;
+  font-size: 14px;
+  color: ${Colors.orange};
+
+  &.error {
+    border: 2px solid red;
+  }
+`;
+
+export const Textarea = styled.textarea`
+  background-color: ${Colors.cream};
+  border: none;
+  padding: 8px;
+  width: 100%;
+  font-size: 14px;
+  color: ${Colors.orange};
+  resize: vertical;
+  min-height: 80px;
+  resize: none;
+`;
+
+export const ConfirmationContainer = styled.div`
+  text-align: start;
+  padding: 20px 0;
+  
+  h3 {
+    color: ${Colors.cream};
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+  
+  p {
+    color: ${Colors.cream};
+    font-size: 14px;
+    margin-bottom: 8px;
+    line-height: 22px;
+  }
+`;
